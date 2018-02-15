@@ -1,1 +1,20 @@
+<?php
+    function connexion()
+    {
+    $con = mysqli_connect("localhost","root","","location");
+    return $con;
+    }
 
+    function deconnexion ($con)
+    {
+        mysqli_close($con);
+    }
+    function selectAllM ($table)
+    {
+        //on se connecte sur la base de données 
+        $con = connexion();
+        $requete ="select * from ". $table. ";";
+        $resultat = mysqli_query($con,$requete);
+        deconnexion($con);
+        return $resultat;
+    }
